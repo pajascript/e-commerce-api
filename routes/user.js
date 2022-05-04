@@ -1,0 +1,21 @@
+const router = require('express').Router();
+const { verifyTokenAndAuthorization, verifyTokenAndAdmin } = require('./verifyToken');
+const { updateUser, deleteUser, getUser, getAllUsers, getUserStats } = require('../controllers/userController');
+
+//Update User
+router.put('/:id', verifyTokenAndAuthorization, updateUser );
+
+//Delete User
+router.delete("/:id", verifyTokenAndAuthorization, deleteUser);
+
+//Get User
+router.get("/find/:id", verifyTokenAndAdmin, getUser);
+
+//Get All Users
+router.get('/', verifyTokenAndAdmin, getAllUsers);
+
+//Get User Stats
+router.get('/stats', verifyTokenAndAdmin, getUserStats);
+
+
+module.exports = router;
