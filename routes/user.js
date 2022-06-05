@@ -1,9 +1,9 @@
 const router = require('express').Router();
-const { verifyTokenAndAuthorization, verifyTokenAndAdmin } = require('./verifyToken');
+const { verifyToken, verifyTokenAndAuthorization, verifyTokenAndAdmin } = require('./verifyToken');
 const { updateUser, deleteUser, getUser, getAllUsers, getUserStats } = require('../controllers/userController');
 
 //Update User
-router.put('/:id', verifyTokenAndAuthorization, updateUser );
+router.put('/:id', updateUser );
 
 //Delete User
 router.delete("/:id", verifyTokenAndAuthorization, deleteUser);

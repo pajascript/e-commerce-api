@@ -1,5 +1,6 @@
 const router = require('express').Router();
-const stripe = require('stripe')(process.env.STRIPE_KEY);
+const Stripe = require('stripe');
+const stripe = Stripe("sk_test_51KsO5fAnCla13EzJUUmviS62PB8Ip1GiDMFNyuPeWu0TCdRT2JDKETyct4MapU1g3YV8frxYHA10QRYiOvfC7J6A00lRTSikye")
 
 router.post('/payment', (req, res) => {
 
@@ -8,8 +9,11 @@ router.post('/payment', (req, res) => {
         amount: req.body.amount,
         currency: "usd"
     }, (stripeErr, stripeRes) => {
-        if (stripeErr) return res.status(500).json(stripeErr);
-        res.status(200).json(stripeRes);
+        if (stripeErr) {
+            res.status(500).json(stripeErr)
+        } else {
+            res.status(200).json(stripeRes);
+        }
     });
     
 });

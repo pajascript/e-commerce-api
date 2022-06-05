@@ -6,7 +6,7 @@ const { createProduct, updateProduct, deleteProduct, getProduct, getAllProducts 
 router.post('/', verifyTokenAndAdmin ,createProduct);
 
 //Update Product
-router.put('/:id', verifyTokenAndAdmin, updateProduct);
+router.put('/:id', verifyTokenAndAuthorization, updateProduct);
 
 //Delete Product
 router.delete('/:id', verifyTokenAndAdmin, deleteProduct);

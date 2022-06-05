@@ -11,6 +11,9 @@ const OrderSchema = new mongoose.Schema(
                 productId: {
                     type: String
                 },
+                productName: {
+                    type: String
+                },
                 quantity: {
                     type: Number,
                     default: 1,
@@ -28,6 +31,9 @@ const OrderSchema = new mongoose.Schema(
         status: {
             type: String,
             default: "pending"
+        },
+        trackingDetails: {
+            type: String,
         }
 
     }, { timestamps: true }
